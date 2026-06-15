@@ -14,7 +14,7 @@ import { groupVariantModels } from '../dist/src/models.js';
 const ORIGINAL_FETCH = global.fetch;
 
 const CONFIG = {
-  baseUrl: 'http://localhost:20128/v1',
+  baseUrl: 'http://localhost:8080/v1',
   apiKey: 'test-key',
   apiMode: 'chat',
   modelCacheTtl: 60000,

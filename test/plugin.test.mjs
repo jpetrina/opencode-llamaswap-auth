@@ -71,7 +71,7 @@ test('config hook applies defaults and normalized apiMode', async () => {
 
   assert.equal(config.provider.llamaswap.api, 'chat');
   assert.equal(config.provider.llamaswap.options.apiMode, 'chat');
-  assert.equal(config.provider.llamaswap.options.baseURL, 'http://localhost:20128/v1');
+  assert.equal(config.provider.llamaswap.options.baseURL, 'http://localhost:8080/v1');
 });
 
 test('loader injects auth headers only for LlamaSwap URLs', async () => {
@@ -833,7 +833,7 @@ test('provider hook ignores stale provider.models and returns defaults when no a
   // Should return default models (gpt-4o, gpt-4o-mini, etc.), NOT stale provider.models
   assert.ok(result['gpt-4o']);
   assert.equal(result['gpt-4o'].providerID, 'llamaswap');
-  assert.equal(result['gpt-4o'].api.url, 'http://localhost:20128/v1');
+  assert.equal(result['gpt-4o'].api.url, 'http://localhost:8080/v1');
   // Stale model must NOT be present
   assert.equal(result['stale-model'], undefined);
 });
@@ -1270,7 +1270,7 @@ test('provider hook groups variant models under base model', async () => {
       name: 'LlamaSwap',
       source: 'config',
       env: [],
-      options: { baseURL: 'http://localhost:20128/v1', apiMode: 'chat' },
+      options: { baseURL: 'http://localhost:8080/v1', apiMode: 'chat' },
       models: {},
     },
     { auth: { type: 'api', key: 'test-key' } },
@@ -1324,7 +1324,7 @@ test('provider hook creates synthetic base model when only variants are returned
       name: 'LlamaSwap',
       source: 'config',
       env: [],
-      options: { baseURL: 'http://localhost:20128/v1', apiMode: 'chat' },
+      options: { baseURL: 'http://localhost:8080/v1', apiMode: 'chat' },
       models: {},
     },
     { auth: { type: 'api', key: 'test-key' } },

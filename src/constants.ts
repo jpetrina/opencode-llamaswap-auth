@@ -8,7 +8,7 @@ export const LLAMASWAP_PROVIDER_ID = 'llama-swap';
  */
 export const LLAMASWAP_ENDPOINTS = {
   /** Base URL for llama-swap API */
-  BASE_URL: 'http://localhost:12434/v1',
+  BASE_URL: 'http://localhost:8080/v1',
   /** Models endpoint */
   MODELS: '/models',
   /** Chat completions endpoint */

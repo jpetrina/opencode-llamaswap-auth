@@ -40,7 +40,7 @@ function createValidModelsDevResponse() {
 // Base config for models.dev tests
 function createConfig(modelsDevOverrides = {}) {
   return {
-    baseUrl: 'http://localhost:20128/v1',
+    baseUrl: 'http://localhost:8080/v1',
     apiKey: 'test-key',
     apiMode: 'chat',
     modelsDev: {

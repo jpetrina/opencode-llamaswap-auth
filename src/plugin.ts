@@ -850,7 +850,7 @@ function getModelFamily(modelId: string): string {
 function createFetchInterceptor(
   config: LlamaSwapConfig,
 ): (input: RequestInfo | URL, init?: RequestInit) => Promise<Response> {
-  const baseUrl = config.baseUrl || 'http://localhost:20128/v1';
+  const baseUrl = config.baseUrl || 'http://localhost:8080/v1';
 
   return async (input: RequestInfo | URL, init?: RequestInit): Promise<Response> => {
     // Properly extract URL from RequestInfo (handles Request objects correctly)

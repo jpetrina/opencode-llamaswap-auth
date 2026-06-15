@@ -82,7 +82,7 @@ While the plugin works out-of-the-box with `/connect`, you can also configure it
   "provider": {
     "llamaswap": {
       "options": {
-        "baseURL": "http://localhost:20128/v1",
+        "baseURL": "http://localhost:8080/v1",
         "apiMode": "chat",
         "apiKey": "<your-API-key>",
         "refreshOnList": true,
@@ -100,7 +100,7 @@ Use `/connect llamaswap` to store your API key in `~/.local/share/opencode/auth.
 | Option | Type | Required | Description |
 |--------|------|----------|-------------|
 | `plugin` | string[] | No | npm plugin packages to load (use `opencode-llamaswap-auth` when installed from npm) |
-| `provider.llamaswap.options.baseURL` | string | No | llama-swap API base URL (default: `http://localhost:20128/v1`) |
+| `provider.llamaswap.options.baseURL` | string | No | llama-swap API base URL (default: `http://localhost:8080/v1`) |
 | `provider.llamaswap.options.apiMode` | `'chat' \| 'responses'` | No | Provider API mode (default: `chat`) |
 | `provider.llamaswap.options.apiKey` | string | No | Usually not needed, llama-swap is default-allow |
 | `provider.llamaswap.options.modelCacheTtl` | number | No | Model cache TTL in milliseconds (default: 5 minutes) |
