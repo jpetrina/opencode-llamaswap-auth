@@ -22,7 +22,10 @@ import { fetchModels, resolveProviderAliasForMetadata } from './models.js';
 import { warn, debug, sanitizeForLog } from './logger.js';
 
 const LLAMASWAP_PROVIDER_NAME = 'llama-swap';
-const LLAMASWAP_PROVIDER_NPM = '@ai-sdk/anthropic';
+// NOTE: This provider has a bug for Qwen, see:
+//  - https://github.com/anomalyco/opencode/issues/5034#issuecomment-4055045992
+//  - https://github.com/anomalyco/opencode/pull/16981
+const LLAMASWAP_PROVIDER_NPM = '@ai-sdk/openai-compatible';
 const LLAMASWAP_PROVIDER_ENV = ['LLAMASWAP_API_KEY'];
 
 type AuthHook = NonNullable<Hooks['auth']>;

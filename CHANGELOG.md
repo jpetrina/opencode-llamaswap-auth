@@ -8,9 +8,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+ - Switch default provider from `@ai-sdk/anthropic` to `@ai-sdk/openai-compatible` with comment
  - Replace all occurences of `:12434` port to `:8080` to signal it's self-hosted
-
----
 
 ## [0.1.0] - 2026-06-14
 
