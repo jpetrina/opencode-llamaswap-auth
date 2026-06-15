@@ -32,10 +32,10 @@ type AuthHook = NonNullable<Hooks['auth']>;
 type AuthLoader = NonNullable<AuthHook['loader']>;
 type AuthAccessor = Parameters<AuthLoader>[0];
 type ProviderDefinition = Parameters<AuthLoader>[1];
-const RAW_MODEL_METADATA = Symbol('llamaswap.rawModelMetadata');
-const RAW_MODEL_METADATA_OPTION = '__llamaswapRawModelMetadata';
-const MODELS_GENERATED_BY_PLUGIN = Symbol('llamaswap.modelsGeneratedByPlugin');
-const MODELS_GENERATED_BY_PLUGIN_OPTION = '__llamaswapModelsGeneratedByPlugin';
+const RAW_MODEL_METADATA = Symbol('llama-swap.rawModelMetadata');
+const RAW_MODEL_METADATA_OPTION = '__llama-swapRawModelMetadata';
+const MODELS_GENERATED_BY_PLUGIN = Symbol('llama-swap.modelsGeneratedByPlugin');
+const MODELS_GENERATED_BY_PLUGIN_OPTION = '__llama-swapModelsGeneratedByPlugin';
 type OptionsWithRawModelMetadata = Record<string, unknown> & {
   [RAW_MODEL_METADATA]?: unknown;
   [MODELS_GENERATED_BY_PLUGIN]?: unknown;

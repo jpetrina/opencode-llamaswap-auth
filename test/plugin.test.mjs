@@ -375,8 +375,8 @@ test('provider hook fetches models when auth is available via context', async ()
 
   const result = await plugin.provider.models(
     {
-      id: 'llamaswap',
-      name: 'LlamaSwap',
+      id: 'llama-swap',
+      name: 'llama-swap',
       source: 'config',
       env: [],
       options: { baseURL: getDummyBaseUrl(), apiMode: 'chat' },
@@ -387,7 +387,7 @@ test('provider hook fetches models when auth is available via context', async ()
 
   assert.ok(result['live-model']);
   assert.equal(result['live-model'].name, 'Live Model');
-  assert.equal(result['live-model'].providerID, 'llamaswap');
+  assert.equal(result['live-model'].providerID, 'llama-swap');
 });
 
 test('provider hook applies modelMetadata overrides before converting models', async () => {
@@ -412,8 +412,8 @@ test('provider hook applies modelMetadata overrides before converting models', a
 
   const result = await plugin.provider.models(
     {
-      id: 'llamaswap',
-      name: 'LlamaSwap',
+      id: 'llama-swap',
+      name: 'llama-swap',
       source: 'config',
       env: [],
       options: {
@@ -455,8 +455,8 @@ test('provider hook applies array literal alias block to canonical fetched model
 
   const result = await plugin.provider.models(
     {
-      id: 'llamaswap',
-      name: 'LlamaSwap',
+      id: 'llama-swap',
+      name: 'llama-swap',
       source: 'config',
       env: [],
       options: {
@@ -497,8 +497,8 @@ test('provider hook treats string metadata match as a literal model id', async (
 
   const result = await plugin.provider.models(
     {
-      id: 'llamaswap',
-      name: 'LlamaSwap',
+      id: 'llama-swap',
+      name: 'llama-swap',
       source: 'config',
       env: [],
       options: {
@@ -537,8 +537,8 @@ test('provider hook addIfMissing array block creates canonical missing model', a
 
   const result = await plugin.provider.models(
     {
-      id: 'llamaswap',
-      name: 'LlamaSwap',
+      id: 'llama-swap',
+      name: 'llama-swap',
       source: 'config',
       env: [],
       options: {
@@ -607,8 +607,8 @@ test('provider hook ignores generated modelMetadata from config hook', async () 
     const clonedOptions = JSON.parse(JSON.stringify(config.provider.llamaswap.options));
     const result = await plugin.provider.models(
       {
-        id: 'llamaswap',
-        name: 'LlamaSwap',
+        id: 'llama-swap',
+        name: 'llama-swap',
         source: 'config',
         env: [],
         options: clonedOptions,
@@ -674,8 +674,8 @@ test('provider hook uses raw user modelMetadata after config hook generated meta
     const clonedOptions = JSON.parse(JSON.stringify(config.provider.llamaswap.options));
     const result = await plugin.provider.models(
       {
-        id: 'llamaswap',
-        name: 'LlamaSwap',
+        id: 'llama-swap',
+        name: 'llama-swap',
         source: 'config',
         env: [],
         options: clonedOptions,
@@ -730,8 +730,8 @@ test('provider hook uses RegExp raw modelMetadata after config hook JSON clone',
 
     const result = await plugin.provider.models(
       {
-        id: 'llamaswap',
-        name: 'LlamaSwap',
+        id: 'llama-swap',
+        name: 'llama-swap',
         source: 'config',
         env: [],
         options: JSON.parse(JSON.stringify(config.provider.llamaswap.options)),
@@ -813,8 +813,8 @@ test('provider hook ignores stale provider.models and returns defaults when no a
 
   const result = await plugin.provider.models(
     {
-      id: 'llamaswap',
-      name: 'LlamaSwap',
+      id: 'llama-swap',
+      name: 'llama-swap',
       source: 'config',
       env: [],
       options: { baseURL: getDummyBaseUrl(), apiMode: 'chat' },
@@ -832,7 +832,7 @@ test('provider hook ignores stale provider.models and returns defaults when no a
 
   // Should return default models (gpt-4o, gpt-4o-mini, etc.), NOT stale provider.models
   assert.ok(result['gpt-4o']);
-  assert.equal(result['gpt-4o'].providerID, 'llamaswap');
+  assert.equal(result['gpt-4o'].providerID, 'llama-swap');
   assert.equal(result['gpt-4o'].api.url, 'http://localhost:8080/v1');
   // Stale model must NOT be present
   assert.equal(result['stale-model'], undefined);
@@ -847,19 +847,19 @@ test('provider hook returns defaults when fetch fails (fetchModels handles error
 
   const result = await plugin.provider.models(
     {
-      id: 'llamaswap',
-      name: 'LlamaSwap',
+      id: 'llama-swap',
+      name: 'llama-swap',
       source: 'config',
       env: [],
       options: { baseURL: getDummyBaseUrl(), apiMode: 'chat' },
-      models: { 'existing-model': { id: 'existing-model', name: 'Existing', providerID: 'llamaswap' } },
+      models: { 'existing-model': { id: 'existing-model', name: 'Existing', providerID: 'llama-swap' } },
     },
     { auth: { type: 'api', key: 'bad-key' } },
   );
 
   // fetchModels catches errors and returns defaults, so we get default models
   assert.ok(result['gpt-4o']);
-  assert.equal(result['gpt-4o'].providerID, 'llamaswap');
+  assert.equal(result['gpt-4o'].providerID, 'llama-swap');
   // When auth is present but fetch fails, fetchModels catches the error and
   // returns default models. The provider.models fallback is NOT used.
   assert.equal(result['existing-model'], undefined);
@@ -990,7 +990,7 @@ test('config hook refreshes legacy generated provider models without marker', as
             'stale-model': {
               id: 'stale-model',
               name: 'Stale Model',
-              providerID: 'llamaswap',
+              providerID: 'llama-swap',
               api: {
                 id: 'stale-model',
                 url: getDummyBaseUrl(20143),
@@ -1035,7 +1035,7 @@ test('config hook preserves explicit user provider models', async () => {
     const explicitModel = {
       id: 'explicit-model',
       name: 'Explicit Model',
-      providerID: 'llamaswap',
+      providerID: 'llama-swap',
     };
     const plugin = await LlamaSwapAuthPlugin({});
     const config = {
@@ -1266,8 +1266,8 @@ test('provider hook groups variant models under base model', async () => {
 
   const result = await plugin.provider.models(
     {
-      id: 'llamaswap',
-      name: 'LlamaSwap',
+      id: 'llama-swap',
+      name: 'llama-swap',
       source: 'config',
       env: [],
       options: { baseURL: 'http://localhost:8080/v1', apiMode: 'chat' },
@@ -1320,8 +1320,8 @@ test('provider hook creates synthetic base model when only variants are returned
 
   const result = await plugin.provider.models(
     {
-      id: 'llamaswap',
-      name: 'LlamaSwap',
+      id: 'llama-swap',
+      name: 'llama-swap',
       source: 'config',
       env: [],
       options: { baseURL: 'http://localhost:8080/v1', apiMode: 'chat' },

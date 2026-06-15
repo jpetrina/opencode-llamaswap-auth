@@ -6,7 +6,7 @@
 
 - **Dynamic Model Fetching** - Automatically fetches available models from `/v1/models` endpoint
 - **API Key Authentication** - Simple and secure API key-based auth
-- **Provider Auto-Registration** - Registers an `llamaswap` provider via plugin hooks
+- **Provider Auto-Registration** - Registers an `llama-swap` provider via plugin hooks
 - **Simple `/connect` Command** - No manual configuration needed
 - **Model Caching** - Intelligent caching with TTL for better performance
 - **Model Metadata Normalization** - Reads all llama-swap field variants (camelCase, snake_case, capabilities object) with proper precedence
@@ -35,7 +35,7 @@ npm install opencode-llamaswap-auth
 Simply run the `/connect` command in OpenCode:
 
 ```
-/connect llamaswap
+/connect llama-swap
 ```
 
 The plugin will prompt you for your **API key** or none by default.
@@ -62,7 +62,7 @@ Once connected, OpenCode will automatically use llama-swap for AI requests:
 
 By default, the plugin refreshes the model list whenever provider options are reloaded (`refreshOnList: true`).
 
-You can disable refreshes by setting `provider.llamaswap.options.refreshOnList` to `false` and clear the cache programmatically:
+You can disable refreshes by setting `provider.llama-swap.options.refreshOnList` to `false` and clear the cache programmatically:
 
 ```typescript
 import { clearModelCache } from 'opencode-llamaswap-auth/runtime';
@@ -80,7 +80,7 @@ While the plugin works out-of-the-box with `/connect`, you can also configure it
     "opencode-llamaswap-auth"
   ],
   "provider": {
-    "llamaswap": {
+    "llama-swap": {
       "options": {
         "baseURL": "http://localhost:8080/v1",
         "apiMode": "chat",
@@ -93,20 +93,20 @@ While the plugin works out-of-the-box with `/connect`, you can also configure it
 }
 ```
 
-Use `/connect llamaswap` to store your API key in `~/.local/share/opencode/auth.json`.
+Use `/connect llama-swap` to store your API key in `~/.local/share/opencode/auth.json`.
 
 ### Configuration Options
 
 | Option | Type | Required | Description |
 |--------|------|----------|-------------|
 | `plugin` | string[] | No | npm plugin packages to load (use `opencode-llamaswap-auth` when installed from npm) |
-| `provider.llamaswap.options.baseURL` | string | No | llama-swap API base URL (default: `http://localhost:8080/v1`) |
-| `provider.llamaswap.options.apiMode` | `'chat' \| 'responses'` | No | Provider API mode (default: `chat`) |
-| `provider.llamaswap.options.apiKey` | string | No | Usually not needed, llama-swap is default-allow |
-| `provider.llamaswap.options.modelCacheTtl` | number | No | Model cache TTL in milliseconds (default: 5 minutes) |
-| `provider.llamaswap.options.refreshOnList` | boolean | No | Whether to refresh models when provider options load (default: true) |
-| `provider.llamaswap.options.modelsDev` | object | No | Enrich model metadata from models.dev on refresh (default: enabled) |
-| `provider.llamaswap.options.modelMetadata` | object \| array | No | Override/add metadata for custom/virtual models (works well in `opencode.js`) |
+| `provider.llama-swap.options.baseURL` | string | No | llama-swap API base URL (default: `http://localhost:8080/v1`) |
+| `provider.llama-swap.options.apiMode` | `'chat' \| 'responses'` | No | Provider API mode (default: `chat`) |
+| `provider.llama-swap.options.apiKey` | string | No | Usually not needed, llama-swap is default-allow |
+| `provider.llama-swap.options.modelCacheTtl` | number | No | Model cache TTL in milliseconds (default: 5 minutes) |
+| `provider.llama-swap.options.refreshOnList` | boolean | No | Whether to refresh models when provider options load (default: true) |
+| `provider.llama-swap.options.modelsDev` | object | No | Enrich model metadata from models.dev on refresh (default: enabled) |
+| `provider.llama-swap.options.modelMetadata` | object \| array | No | Override/add metadata for custom/virtual models (works well in `opencode.js`) |
 
 ### Model Metadata Enrichment (models.dev)
 
@@ -118,7 +118,7 @@ You can disable enrichment or override defaults:
 ```js
 {
   provider: {
-    llamaswap: {
+    "llama-swap": {
       options: {
         modelsDev: {
           enabled: true,
@@ -144,11 +144,11 @@ In `opencode.js` you can use RegExp matchers:
 ```js
 {
   provider: {
-    llamaswap: {
+    "llama-swap": {
       options: {
         modelMetadata: [
           { match: /gpt-5\.3-codex$/i, contextWindow: 200000, maxTokens: 8192 },
-          { match: 'llamaswap/virtual/my-custom-model', addIfMissing: true, contextWindow: 50000 },
+          { match: 'llama-swap/virtual/my-custom-model', addIfMissing: true, contextWindow: 50000 },
         ],
       },
     },
@@ -161,7 +161,7 @@ In JSON configs, use an object keyed by model id:
 ```json
 {
   "provider": {
-    "llamaswap": {
+    "llama-swap": {
       "options": {
         "modelMetadata": {
           "virtual/my-custom-model": { "contextWindow": 50000, "maxTokens": 2048 }
@@ -184,7 +184,7 @@ Example:
 ```json
 {
   "provider": {
-    "llamaswap": {
+    "llama-swap": {
       "options": {
         "apiMode": "responses"
       }
@@ -298,9 +298,9 @@ npm run clean
 
 ### Connection Failed
 
-If you see "Connection failed" when running `/connect llamaswap`:
+If you see "Connection failed" when running `/connect llama-swap`:
 
-1. **Check your configured base URL** - Ensure `provider.llamaswap.options.baseURL` points to your llama-swap endpoint
+1. **Check your configured base URL** - Ensure `provider.llama-swap.options.baseURL` points to your llama-swap endpoint
 2. **Verify your API key** - Ensure your API key starts with `sk-` and is valid
 3. **Check llama-swap is running** - Ensure your llama-swap instance is accessible
 
@@ -309,8 +309,8 @@ If you see "Connection failed" when running `/connect llamaswap`:
 If models aren't loading:
 
 1. Check your llama-swap `/v1/models` endpoint is accessible
-2. Ensure `provider.llamaswap.options.baseURL` points to your llama-swap endpoint
-3. Re-run `/connect llamaswap` to refresh your API key
+2. Ensure `provider.llama-swap.options.baseURL` points to your llama-swap endpoint
+3. Re-run `/connect llama-swap` to refresh your API key
 4. If you use the package programmatically, call `clearModelCache()` from `opencode-llamaswap-auth/runtime`
 5. Check the OpenCode logs for error messages
 

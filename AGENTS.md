@@ -45,7 +45,7 @@ npm run prepublishOnly
 
 | File | Responsibility |
 |------|----------------|
-| `src/plugin.ts` | Plugin implementation: `config` hook (registers `llamaswap` provider), `auth` hook (`/connect` command), `loadProviderOptions` (fetches models and returns a `fetch` interceptor). |
+| `src/plugin.ts` | Plugin implementation: `config` hook (registers `llama-swap` provider), `auth` hook (`/connect` command), `loadProviderOptions` (fetches models and returns a `fetch` interceptor). |
 | `src/models.ts` | `fetchModels()` fetches `/v1/models`, manages an in-memory cache keyed by `baseUrl:apiKey`, falls back to defaults on failure. Orchestrates metadata enrichment via `models-dev.ts`. |
 | `src/models-dev.ts` | Fetches `https://models.dev/api.json`, builds indexed lookup maps (exact/normalized, provider-specific and global), and maps llama-swap provider keys to models.dev providers via aliases. |
 | `src/constants.ts` | Endpoints, default models, TTLs, timeouts. |
